@@ -1,0 +1,16 @@
+---
+title: "Classify columns with LLMs"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Classify columns with LLMs}
+  %\VignetteEngine{knitr::rmarkdown}
+---
+
+```r
+library(classifyLLM)
+library(dplyr)
+Sys.setenv(OPENAI_API_KEY = "<your_key>")
+
+tibble::tibble(text = c("latte", "sencha", "ristretto")) |>
+  mutate(label = classify_llm(text, c("coffee","tea")))
+```

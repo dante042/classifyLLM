@@ -1,0 +1,23 @@
+
+# classifyLLM
+
+Tidy LLM-powered classification for vectors/columns.
+
+``` r
+# install.packages("pak"); pak::pak("dante042/classifyLLM")
+library(classifyLLM)
+library(dplyr)
+
+Sys.setenv(OPENAI_API_KEY = "<your_key>")
+
+df <- tibble::tibble(
+  animal = c("siamese kitty", "golden retriever", "parakeet")
+)
+
+df |>
+  mutate(species = classify_llm(
+    animal,
+    categories = c("cat","dog","bird"),
+    model = "gpt-4o-mini"
+  ))
+```
