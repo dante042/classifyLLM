@@ -1,7 +1,7 @@
 # classifyLLM <a href="https://dante042.github.io/classifyLLM"><img src="https://img.shields.io/badge/docs-pkgdown-blue" align="right" height="24"></a>
 
 **classifyLLM** brings the power of modern large language models (LLMs) to tidyverse data pipelines.
-# classifyLLM <img src="man/figures/logo.png" align="right" height="120"/>
+classifyLLM <img src="man/figures/logo.png" align="right" height="120"/>
 
 It provides a minimal and transparent interface for classifying text data into predefined categories directly from R—without building your own machine-learning models.
 
