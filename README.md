@@ -36,6 +36,10 @@ Traditional NLP workflows require model training, feature engineering, or extern
 ## 🧩 Example
 
 ```r
+# install
+remotes::install_github("dante042/classifyLLM")
+
+# loading
 library(classifyLLM)
 library(dplyr)
 
