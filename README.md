@@ -1,12 +1,14 @@
 # classifyLLM <a href="https://dante042.github.io/classifyLLM"><img src="https://img.shields.io/badge/docs-pkgdown-blue" align="right" height="24"></a>
-# <img src="logo.png" align="right" height="200"/>
+# <img src="logo.png" align="right" height="300"/>
+
 **classifyLLM** brings the power of modern large language models (LLMs) directly into tidyverse data pipelines.
-Unlike most wrappers around LLM APIs, which work through isolated prompts or custom loops, classifyLLM is designed from the ground up to integrate naturally with R’s data-analysis grammar.It provides a clean, transparent, and auditable interface for classifying text into predefined categories — directly within mutate() or across() — so that each classification behaves like any other vectorized transformation in a tidy workflow.
+Unlike most wrappers around LLM APIs, which work through isolated prompts or custom loops, classifyLLM is designed from the ground up to integrate naturally with R’s data-analysis grammar.It provides a clean, transparent, and auditable interface for classifying text into predefined categories — directly within `mutate()` or `across()`  so that each classification behaves like any other vectorized transformation in a tidy workflow.
+
 You don’t need to manage API calls, parse JSON responses, or build machine-learning models: the package handles all communication, batching, and parsing automatically, returning results as tidy columns that blend seamlessly with existing datasets. This makes classifyLLM especially valuable for analysts who want to apply LLM-based reasoning at scale while preserving the clarity, reproducibility, and pipeline logic of the tidyverse.
 
 ---
 
-## 🧭 Why this package
+## 🧭 So why this package
 
 Analysts and researchers often need to classify open-ended text fields:
 - survey responses or interview transcripts  
