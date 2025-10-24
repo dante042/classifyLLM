@@ -43,7 +43,8 @@ remotes::install_github("dante042/classifyLLM")
 library(classifyLLM)
 library(dplyr)
 
-Sys.setenv(OPENAI_API_KEY = "sk-...")   # or classifyLLM::set_openai_key()
+Sys.setenv(OPENAI_API_KEY = "sk-...")
+# or classifyLLM::set_openai_key()
 
 tibble::tibble(animal = c("siamese kitty", "golden retriever", "parakeet")) |>
   mutate(species = classify_llm(
