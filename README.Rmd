@@ -52,3 +52,45 @@ tibble::tibble(animal = c("siamese kitty", "golden retriever", "parakeet")) |>
     model = "gpt-4o-mini",
     temperature = 0
   ))
+```
+
+## 🧠 New: Classify using a data frame of categories
+
+While `classify_llm()` lets you define categories directly in the function call,  the new `classify_df()` function lets you provide a tidy data frame of categories and optional descriptions, perfect when your taxonomy is stored in a CSV or shared file.
+
+```r
+library(classifyLLM)
+library(dplyr)
+
+# Example texts
+texts <- tibble::tibble(
+  id = 1:3,
+  content = c(
+    "Food distribution in border camp delayed by insecurity.",
+    "Price inflation accelerates in host communities.",
+    "Asylum application processing times decrease."
+  )
+)
+
+
+# Category definitions
+
+categories <- tibble::tribble(
+  ~category,       ~description,
+  "Protection",    "Risks, incidents, access to territory/asylum, GBV/CP",
+  "Basic Needs",   "Shelter, food, WASH, core relief items",
+  "Livelihoods",   "Jobs, income, markets, prices",
+  "Procedures",    "RSD, documentation, processing, status"
+)
+
+# Classify with a tidy category table
+texts |> 
+  classify_df(content, categories = categories, model = "gpt-4o-mini")
+
+#> # A tibble: 3 × 4
+#>      id content                                         .pred_category .pred_score
+#>   <int> <chr>                                           <chr>                <dbl>
+#> 1     1 Food distribution in border camp delayed by ... Basic Needs          0.87
+#> 2     2 Price inflation accelerates in host communit... Livelihoods          0.91
+#> 3     3 Asylum application processing times decrease.   Procedures           0.93
+```
