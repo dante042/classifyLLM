@@ -22,7 +22,6 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
-
     steps:
       - uses: actions/checkout@v4
 
@@ -34,11 +33,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: |
-            any::pkgdown
-            any::tidytemplate
-            local::.
-          extra-repositories: https://tidyverse.r-universe.dev
+          extra-packages: any::pkgdown, local::.
           needs: website
 
       - name: Build site
