@@ -40,6 +40,34 @@ directly, within your data pipeline.
 
 ------------------------------------------------------------------------
 
+# 📦 Installation
+
+You can install the development version of **classifyLLM** from GitHub using **{remotes}**:
+
+```r
+# install remotes if needed
+install.packages("remotes")
+
+# install classifyLLM from GitHub
+remotes::install_github("dante042/classifyLLM")
+
+# load the package
+library(classifyLLM)
+```
+
+Before using the package, make sure your OpenAI API key is available as an environment variable:
+
+```r
+Sys.setenv(OPENAI_API_KEY = "your_api_key_here")
+```
+
+Or store it permanently in your `.Renviron` file:
+
+```r
+usethis::edit_r_environ()
+# then add: OPENAI_API_KEY=your_api_key_here
+```
+------------------------------------------------------------------------
 ## 🧩 Example
 
 ``` r
