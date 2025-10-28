@@ -1,4 +1,4 @@
 url: https://dante042.github.io/classifyLLM/
 template:
+  package: tidytemplate
   bootstrap: 5
-
