@@ -9,7 +9,7 @@ Description: Classify character vectors into predefined categories using a Large
     from OpenAI, designed to fit naturally into tidyverse pipelines (e.g., mutate()).
     Includes helpers for prompts and safe fallbacks.
 License: MIT + file LICENSE
-URL: https://github.com/dante042/classifyLLM
+URL: https://github.com/dante042/classifyLLM, https://dante042.github.io/classifyLLM/
 BugReports: https://github.com/dante042/classifyLLM/issues
 Depends: R (>= 4.1)
 Imports:

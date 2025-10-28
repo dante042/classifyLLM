@@ -1,0 +1,65 @@
+---
+title: "Handling edge cases & guardrails"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: flatly
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(classifyLLM)
+library(dplyr)
+library(tibble)
+```
+
+## Missing or empty text
+```r
+df <- tibble(text = c("ok", NA, "   "))
+
+df |>
+  mutate(
+    label = classify_llm(
+      text,
+      categories = c("Yes", "No")
+    )
+  )
+```
+
+## Out-of-set or ambiguous responses
+```r
+df <- tibble(text = c("fine", "bad", "so-so", "excellent"))
+
+df |>
+  mutate(
+    raw = classify_llm(text, categories = c("Positive","Negative")),
+    label = dplyr::recode(raw,
+      "so-so" = "Neutral",
+      .default = raw
+    )
+  )
+```
+
+::: callout-warning
+**Tip:** You can always post-process LLM output with `recode()` or a lookup table to enforce strict categories.
+:::
+
+## Long inputs and rate limits
+Use `batch_size` and `delay` to control throughput:
+```r
+df |>
+  mutate(
+    category = classify_llm(
+      text,
+      categories = c("Info","Complaint","Request"),
+      batch_size = 5,
+      delay = 2
+    )
+  )
+```

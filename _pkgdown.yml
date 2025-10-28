@@ -1,0 +1,67 @@
+url: https://dante042.github.io/classifyLLM/
+
+template:
+  package: tidytemplate   # gives the ggplot2/tidyverse vibe
+  bootstrap: 5
+  bslib:
+    primary: "#1F9D55"      # your accent green
+    code-color: "#0f5132"
+
+# Navbar like ggplot2: Get started, Articles, Reference
+navbar:
+  structure:
+    left:  [intro, articles, reference, news]
+    right: [search, github]
+  components:
+    intro:
+      text: Get started
+      href: articles/getting-started.html
+    articles:
+      text: Articles
+      menu:
+        - text: Edge cases & guardrails
+          href: articles/edge-cases.html
+        - text: Audit & reproducibility
+          href: articles/audit-and-reproducibility.html
+    reference:
+      text: Reference
+      href: reference/index.html
+    news:
+      text: News
+      href: news/index.html
+    github:
+      icon: fa-github
+      href: https://github.com/dante042/classifyLLM
+
+home:
+  title: "classifyLLM"
+  description: >
+    Tidy, auditable text classification with LLMs — directly in mutate().
+
+authors:
+  Dante Sanchez:
+    href: https://www.linkedin.com/in/dante-sanchez/
+
+# Reference index (group functions like ggplot2 does)
+reference:
+  - title: "Core"
+    desc: "Classify text using LLMs in tidy pipelines."
+    contents:
+      - classify_llm
+  - title: "Setup"
+    contents:
+      - set_openai_key
+  - title: "Utilities"
+    contents:
+      - matches("^classify_")     # any helpers that start with classify_
+
+# Articles (vignettes) you’ll build in vignettes/
+articles:
+  - title: "Guides"
+    contents:
+      - articles/getting-started.qmd
+      - articles/edge-cases.qmd
+      - articles/audit-and-reproducibility.qmd
+
+# Build options
+destination: docs

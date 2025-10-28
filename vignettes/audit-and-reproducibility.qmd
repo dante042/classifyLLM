@@ -1,0 +1,56 @@
+---
+title: "Audit mode & reproducibility"
+format:
+  html:
+    toc: true
+    code-fold: show
+    theme: flatly
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(classifyLLM)
+library(dplyr)
+library(tibble)
+```
+
+## Why audit mode
+Transparency matters — `audit_mode = TRUE` lets you capture model metadata, raw responses, and rationales.
+
+## Example
+```r
+df <- tibble(
+  text = c("Increase in arrivals reported", "Shelter conditions improved")
+)
+
+df |>
+  mutate(
+    out = classify_llm(
+      text,
+      categories = c("Protection","Shelter","Health"),
+      audit_mode = TRUE
+    )
+  ) |>
+  tidyr::unnest_wider(out) |>
+  select(text, label, rationale, model, ts)
+```
+
+## Save an audit log
+```r
+df |>
+  mutate(out = classify_llm(text, categories = c("A","B"), audit_mode = TRUE)) |>
+  tidyr::unnest_wider(out) |>
+  readr::write_csv("audit_log.csv")
+```
+
+::: callout-note
+**Reproducibility checklist**
+- Record `model` and `temperature`
+- Pin provider versions where possible
+- Save timestamps and raw responses
+:::

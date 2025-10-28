@@ -1,0 +1,66 @@
+---
+title: "Getting started with classifyLLM"
+format:
+  html:
+    toc: true
+    code-fold: show
+    code-tools: true
+    theme: flatly
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(classifyLLM)
+library(dplyr)
+library(tibble)
+```
+
+::: callout-tip
+**One-line classification in a tidy pipeline**  
+No model training, no JSON parsing — just `mutate()`.
+:::
+
+## Installation
+```r
+# install.packages("remotes")
+remotes::install_github("dante042/classifyLLM")
+```
+
+## Quick example
+```r
+df <- tibble(
+  id = 1:5,
+  text = c(
+    "Great progress on the program.",
+    "This is unacceptable performance.",
+    "Neutral report with mixed results.",
+    "Strong positive outcomes in protection.",
+    "Severe constraints and delays reported."
+  )
+)
+
+df |>
+  mutate(
+    sentiment = classify_llm(
+      text,
+      categories = c("Positive", "Neutral", "Negative")
+    )
+  )
+```
+
+## Use with `across()`
+```r
+df |>
+  mutate(
+    across(text, ~ classify_llm(.x, categories = c("Pos","Neg","Neutral")))
+  )
+```
+
+::: callout-note
+**Reproducibility:** set `temperature = 0` to minimize randomness and pin the model version for consistent results.
+:::
