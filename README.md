@@ -1,7 +1,7 @@
 
-# classifyLLM <img src="/logo.png" align="right" height="140" />
 
 # classifyLLM <a href="https://dante042.github.io/classifyLLM"><img src="https://img.shields.io/badge/docs-pkgdown-blue" align="right" height="24"></a>
+<img src="/logo.png" align="right" height="140" />
 
 **classifyLLM** brings the power of modern large language models (LLMs)
 to tidyverse data pipelines.
