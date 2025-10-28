@@ -3,12 +3,12 @@
 # classifyLLM <a href="https://dante042.github.io/classifyLLM"><img src="https://img.shields.io/badge/docs-pkgdown-blue" align="right" height="24"></a>
 <img src="/logo.png" align="right" height="140" />
 
-**classifyLLM** brings the power of modern large language models (LLMs)
-to tidyverse data pipelines.
+**classifyLLM** brings the power of modern large language models (LLMs) directly into tidyverse data pipelines.It offers a simple, transparent, and auditable way to classify text into predefined categories—without the need to train or maintain your own machine-learning models.
 
-It provides a minimal and transparent interface for classifying text
-data into predefined categories directly from R—without building your
-own machine-learning models.
+By combining R’s native data-wrangling syntax with LLM-based reasoning, classifyLLM allows analysts to apply consistent classification logic across large datasets using a single line of code inside `mutate()`.
+The package handles prompt construction, model communication, and output parsing automatically, returning results as tidy columns that integrate seamlessly with existing workflows.
+
+This makes **classifyLLM** particularly useful for text-rich humanitarian, social science, or policy datasets—where labels or categories are often context-specific and traditional supervised models are difficult to build due to limited training data or changing definitions.
 
 ------------------------------------------------------------------------
 
